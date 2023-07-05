@@ -19,6 +19,7 @@ namespace NEA_Prototype
 
             if (timerChoice == 'y' || timerChoice == 'Y')
             {
+
                 Console.Write("Do you wish to have either a ");
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("stopwatch");
@@ -27,28 +28,82 @@ namespace NEA_Prototype
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("countdown");
                 Console.ResetColor();
-                Console.Write("? To get more information on either, type ");
+                Console.Write("? To get more information on either, select ");
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("info");
                 Console.ResetColor();
 
-                string whichTimerChoice = Console.ReadLine();
+                Console.WriteLine("");
 
-                if (whichTimerChoice == "info".ToUpper())
-                {
-                    Console.Clear();
-                    Console.WriteLine("The stopwatch");
-                }
+                Console.WriteLine("  Stopwatch");
+                Console.WriteLine("  Countdown");
+                Console.WriteLine("  Info");
+                Console.WriteLine("  Back");
 
-                else if (whichTimerChoice == "s")
-                {
-                    stopwatch = true;
-                }
+                Console.CursorTop = 3;
+                Console.CursorLeft = 0;
+                Console.Write(">");
 
-                else if (whichTimerChoice == "c")
+                int option = 3;
+                bool back = false;
+
+                do
                 {
-                    countdown = true;
-                }
+
+                    ConsoleKeyInfo choice = Console.ReadKey(true);
+
+                    if (choice.Key == ConsoleKey.DownArrow && option < 6)
+                    {
+                        Console.CursorTop = option;
+                        Console.CursorLeft = 0;
+                        Console.Write(" ");
+                        option++;
+                        Console.CursorTop = option;
+                        Console.CursorLeft = 0;
+                        Console.Write(">");
+                    }
+
+                    else if (choice.Key == ConsoleKey.UpArrow && option > 3)
+                    {
+                        Console.CursorTop = option;
+                        Console.CursorLeft = 0;
+                        Console.Write(" ");
+                        option--;
+                        Console.CursorTop = option;
+                        Console.CursorLeft = 0;
+                        Console.Write(">");
+                    }
+
+                    else if (choice.Key == ConsoleKey.Enter)
+                    {
+
+                        Console.Clear();
+
+                        if (option == 3)
+                        {
+                            stopwatch = true;
+                            Console.WriteLine("stopwatch");
+                        }
+
+                        else if (option == 4)
+                        {
+                            countdown = true;
+                            Console.WriteLine("countdown");
+                        }
+
+                        else if (option == 5)
+                        {
+                            Console.WriteLine("info");
+                        }
+
+                        else if (option == 6)
+                        {
+                            Console.WriteLine("back");
+                            back = true;
+                        }
+                    }
+                    
+                } while (back != true);
 
             }
 
