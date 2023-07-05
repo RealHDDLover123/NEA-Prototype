@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32228.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NEA Prototype", "NEA Prototype.csproj", "{EDA82A46-3CB9-4672-93F6-C671202D6319}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDA82A46-3CB9-4672-93F6-C671202D6319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDA82A46-3CB9-4672-93F6-C671202D6319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDA82A46-3CB9-4672-93F6-C671202D6319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDA82A46-3CB9-4672-93F6-C671202D6319}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38E31906-2A4D-4768-B3BB-3A0B65D8D70F}
+	EndGlobalSection
+EndGlobal
