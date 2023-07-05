@@ -1,0 +1,8 @@
+\\RHEA\HOME\2022\22AM3929\Documents\GitHub\NEA-Prototype\NEA Prototype\bin\Debug\NEA Prototype.exe.config
+\\RHEA\HOME\2022\22AM3929\Documents\GitHub\NEA-Prototype\NEA Prototype\bin\Debug\NEA Prototype.exe
+\\RHEA\HOME\2022\22AM3929\Documents\GitHub\NEA-Prototype\NEA Prototype\bin\Debug\NEA Prototype.pdb
+\\RHEA\HOME\2022\22AM3929\Documents\GitHub\NEA-Prototype\NEA Prototype\obj\Debug\NEA Prototype.csproj.AssemblyReference.cache
+\\RHEA\HOME\2022\22AM3929\Documents\GitHub\NEA-Prototype\NEA Prototype\obj\Debug\NEA Prototype.csproj.SuggestedBindingRedirects.cache
+\\RHEA\HOME\2022\22AM3929\Documents\GitHub\NEA-Prototype\NEA Prototype\obj\Debug\NEA Prototype.csproj.CoreCompileInputs.cache
+\\RHEA\HOME\2022\22AM3929\Documents\GitHub\NEA-Prototype\NEA Prototype\obj\Debug\NEA Prototype.exe
+\\RHEA\HOME\2022\22AM3929\Documents\GitHub\NEA-Prototype\NEA Prototype\obj\Debug\NEA Prototype.pdb
