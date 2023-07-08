@@ -1,0 +1,8 @@
+D:\Github\NEA-Prototype\General troubleshooting\bin\Debug\General troubleshooting.exe.config
+D:\Github\NEA-Prototype\General troubleshooting\bin\Debug\General troubleshooting.exe
+D:\Github\NEA-Prototype\General troubleshooting\bin\Debug\General troubleshooting.pdb
+D:\Github\NEA-Prototype\General troubleshooting\obj\Debug\General troubleshooting.csproj.AssemblyReference.cache
+D:\Github\NEA-Prototype\General troubleshooting\obj\Debug\General troubleshooting.csproj.SuggestedBindingRedirects.cache
+D:\Github\NEA-Prototype\General troubleshooting\obj\Debug\General troubleshooting.csproj.CoreCompileInputs.cache
+D:\Github\NEA-Prototype\General troubleshooting\obj\Debug\General troubleshooting.exe
+D:\Github\NEA-Prototype\General troubleshooting\obj\Debug\General troubleshooting.pdb

@@ -8,79 +8,160 @@ namespace NEA_Prototype
 {
     internal class Program
     {
-        static void countdown(int time)
-        {
-            for (int i = time; i >= 0; i--)
-            {
-                Console.WriteLine(i + " seconds left");
-                System.Threading.Thread.Sleep(1000);
-            }
-        }
 
         static void question1()
         {
+            Console.WriteLine("question 1");
             Console.WriteLine("Answer is b");
             char userAnswer = Console.ReadKey(true).KeyChar;
         }
 
         static void question2()
         {
+            Console.WriteLine("question 2");
             Console.WriteLine("Answer is a");
             char userAnswer = Console.ReadKey(true).KeyChar;
         }
 
         static void question3()
         {
+            Console.WriteLine("question 3");
             Console.WriteLine("Answer is c");
             char userAnswer = Console.ReadKey(true).KeyChar;
         }
 
         static void question4()
         {
+            Console.WriteLine("question 4");
             Console.WriteLine("Answer is e");
             char userAnswer = Console.ReadKey(true).KeyChar;
         }
 
         static void question5()
         {
+            Console.WriteLine("question 5");
             Console.WriteLine("Answer is d");
             char userAnswer = Console.ReadKey(true).KeyChar;
         }
 
         static void question6()
         {
+            Console.WriteLine("question 6");
             Console.WriteLine("Answer is d");
             char userAnswer = Console.ReadKey(true).KeyChar;
         }
 
         static void question7()
         {
+            Console.WriteLine("question 7");
             Console.WriteLine("Answer is a");
             char userAnswer = Console.ReadKey(true).KeyChar;
         }
 
         static void question8()
         {
+            Console.WriteLine("question 8");
             Console.WriteLine("Answer is b");
             char userAnswer = Console.ReadKey(true).KeyChar;
         }
 
         static void question9()
         {
+            Console.WriteLine("question 9");
             Console.WriteLine("Answer is c");
             char userAnswer = Console.ReadKey(true).KeyChar;
         }
 
         static void question10()
         {
+            Console.WriteLine("question 10");
             Console.WriteLine("Answer is b");
             char userAnswer = Console.ReadKey(true).KeyChar;
+        }
+
+
+        static void printQuestions(int numOfQuestions)
+        {
+            Random rnd = new Random();
+
+            /*for (int i = 0; i < numOfQuestions; i++)
+            {
+                int nextQuestion = rnd.Next(1, numOfQuestions + 1);
+
+                switch (chosenQuestion)
+                {
+                    case 1:
+                        question1();
+                        break;
+
+                    case 2:
+                        question2();
+                        break;
+
+                    case 3:
+                        question3();
+                        break;
+
+                    case 4:
+                        question4();
+                        break;
+
+                    case 5:
+                        question5();
+                        break;
+
+                    case 6:
+                        question6();
+                        break;
+
+                    case 7:
+                        question7();
+                        break;
+
+                    case 8:
+                        question8();
+                        break;
+
+                    case 9:
+                        question9();
+                        break;
+
+                    case 10:
+                        question10();
+                        break;
+
+                    default:
+                        break;
+                }
+
+            }*/
+            List<int> listOfUniqueNumbers = new List<int>();
+
+            while (listOfUniqueNumbers.Count != numOfQuestions)
+            {
+                for (int i = 0; i < numOfQuestions + 1; i++)
+                {
+                    int chosenQuestion = rnd.Next(1, 11);
+
+                    if (!listOfUniqueNumbers.Contains(chosenQuestion))
+                    {
+                        listOfUniqueNumbers.Add(chosenQuestion);
+                    }
+                }
+            }
+
+            for (int i = 0; i < listOfUniqueNumbers.Count; i++)
+            {
+                int real = listOfUniqueNumbers[i];
+                Console.WriteLine(real);
+            }
+
+            Console.WriteLine("End of questions");
         }
 
         static void Main(string[] args)
         {
 
-            Random rnd = new Random();
 
             bool countdown = false;
             bool stopwatch = false;
@@ -193,7 +274,21 @@ namespace NEA_Prototype
 
             Console.WriteLine("Questions will now be started");
 
-            int nextQuestion = rnd.Next(1, numOfQuestions + 1);
+            Console.ReadKey();
+
+            Console.Clear();
+
+            if (countdown == true)
+            {
+
+            }
+
+            else if (stopwatch == true)
+            {
+
+            }
+
+            printQuestions(numOfQuestions);
 
             Console.ReadKey();
 
