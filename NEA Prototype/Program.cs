@@ -8,8 +8,79 @@ namespace NEA_Prototype
 {
     internal class Program
     {
+        static void countdown(int time)
+        {
+            for (int i = time; i >= 0; i--)
+            {
+                Console.WriteLine(i + " seconds left");
+                System.Threading.Thread.Sleep(1000);
+            }
+        }
+
+        static void question1()
+        {
+            Console.WriteLine("Answer is b");
+            char userAnswer = Console.ReadKey(true).KeyChar;
+        }
+
+        static void question2()
+        {
+            Console.WriteLine("Answer is a");
+            char userAnswer = Console.ReadKey(true).KeyChar;
+        }
+
+        static void question3()
+        {
+            Console.WriteLine("Answer is c");
+            char userAnswer = Console.ReadKey(true).KeyChar;
+        }
+
+        static void question4()
+        {
+            Console.WriteLine("Answer is e");
+            char userAnswer = Console.ReadKey(true).KeyChar;
+        }
+
+        static void question5()
+        {
+            Console.WriteLine("Answer is d");
+            char userAnswer = Console.ReadKey(true).KeyChar;
+        }
+
+        static void question6()
+        {
+            Console.WriteLine("Answer is d");
+            char userAnswer = Console.ReadKey(true).KeyChar;
+        }
+
+        static void question7()
+        {
+            Console.WriteLine("Answer is a");
+            char userAnswer = Console.ReadKey(true).KeyChar;
+        }
+
+        static void question8()
+        {
+            Console.WriteLine("Answer is b");
+            char userAnswer = Console.ReadKey(true).KeyChar;
+        }
+
+        static void question9()
+        {
+            Console.WriteLine("Answer is c");
+            char userAnswer = Console.ReadKey(true).KeyChar;
+        }
+
+        static void question10()
+        {
+            Console.WriteLine("Answer is b");
+            char userAnswer = Console.ReadKey(true).KeyChar;
+        }
+
         static void Main(string[] args)
         {
+
+            Random rnd = new Random();
 
             bool countdown = false;
             bool stopwatch = false;
@@ -82,13 +153,11 @@ namespace NEA_Prototype
                         if (option == 3)
                         {
                             stopwatch = true;
-                            Console.WriteLine("stopwatch");
                         }
 
                         else if (option == 4)
                         {
                             countdown = true;
-                            Console.WriteLine("countdown");
                         }
 
                         else if (option == 5)
@@ -102,10 +171,29 @@ namespace NEA_Prototype
                             back = true;
                         }
                     }
-                    
+
                 } while (back != true);
 
             }
+
+            Console.WriteLine("Do you want to have a normal sized test or a short test?");
+            string testSizeChoice = Console.ReadLine();
+
+            int numOfQuestions = 0;
+
+            if (testSizeChoice == "normal")
+            {
+                numOfQuestions = 10;
+            }
+
+            else if (testSizeChoice == "short")
+            {
+                numOfQuestions = 5;
+            }
+
+            Console.WriteLine("Questions will now be started");
+
+            int nextQuestion = rnd.Next(1, numOfQuestions + 1);
 
             Console.ReadKey();
 

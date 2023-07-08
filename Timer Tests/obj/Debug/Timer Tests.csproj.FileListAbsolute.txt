@@ -1,0 +1,8 @@
+D:\Github\NEA-Prototype\Timer Tests\bin\Debug\Timer Tests.exe.config
+D:\Github\NEA-Prototype\Timer Tests\bin\Debug\Timer Tests.exe
+D:\Github\NEA-Prototype\Timer Tests\bin\Debug\Timer Tests.pdb
+D:\Github\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.csproj.AssemblyReference.cache
+D:\Github\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.csproj.SuggestedBindingRedirects.cache
+D:\Github\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.csproj.CoreCompileInputs.cache
+D:\Github\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.exe
+D:\Github\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.pdb
