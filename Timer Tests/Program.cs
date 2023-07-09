@@ -26,14 +26,20 @@ namespace Timer_Tests
                             System.Threading.Thread.Sleep(1000);
                         }*/
 
-            var elapsedTime = new DateTime(1000, 1, 1, 0, mins, 0);
+            /*var elapsedTime = new DateTime(1000, 1, 1, 0, mins, 0);
 
             for (int i = 0; i <= mins * 60; i++)
             {
                 Console.Write(elapsedTime.ToString("\rmm:ss"));
                 elapsedTime = elapsedTime.AddSeconds(-1);
                 System.Threading.Thread.Sleep(1000);
-            }
+            }*/
+
+            CountdownEvent Countdown = new CountdownEvent(mins * 60000);
+
+            System.Threading.Thread.Sleep(5000);
+
+            Console.WriteLine(Countdown.Signal());
 
         }
 
@@ -69,13 +75,13 @@ namespace Timer_Tests
 
             stopwatch.Start();
 
+            System.Threading.Thread.Sleep(5000); //only used for tests
+
+            stopwatch.Stop();
+
             TimeSpan elapsedTime = stopwatch.Elapsed;
 
             string time = String.Format("{0:00}:{1:00}:{2:00}", elapsedTime.Hours, elapsedTime.Minutes, elapsedTime.Seconds);
-
-            System.Threading.Thread.Sleep(5000);
-
-            stopwatch.Stop();
 
             Console.WriteLine("Time is " + time);
 

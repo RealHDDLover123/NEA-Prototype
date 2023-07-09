@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,29 @@ namespace NEA_Prototype
 {
     internal class Program
     {
+
+        static void Countdown(int mins, bool finishedTest, DateTime elapsedTimeCountdown)
+        {
+
+            elapsedTimeCountdown = new DateTime(1000, 1, 1, 0, mins, 0);
+
+            for (int i = 0; i <= mins * 60; i++)
+            {
+                //Console.Write(elapsedTime.ToString("\rmm:ss"));
+                if (finishedTest != true)
+                {
+                    elapsedTimeCountdown = elapsedTimeCountdown.AddSeconds(-1);
+                    System.Threading.Thread.Sleep(1000);
+                }
+
+                else
+                {
+                    Console.WriteLine("Your time was " + elapsedTimeCountdown);
+                }
+
+            }
+
+        }
 
         static void question1()
         {
@@ -80,13 +104,28 @@ namespace NEA_Prototype
         }
 
 
-        static void printQuestions(int numOfQuestions)
+        static void printQuestions(int numOfQuestions, bool finishedTest)
         {
             Random rnd = new Random();
+            
+            List<int> listOfUniqueNumbers = new List<int>();
 
-            /*for (int i = 0; i < numOfQuestions; i++)
+            while (listOfUniqueNumbers.Count != numOfQuestions)
             {
-                int nextQuestion = rnd.Next(1, numOfQuestions + 1);
+                for (int i = 0; i < numOfQuestions + 1; i++)
+                {
+                    int chosenQuestionNumber = rnd.Next(1, 11 /* this number should be the maximum possible amount of questions + 1 */);
+
+                    if (!listOfUniqueNumbers.Contains(chosenQuestionNumber))
+                    {
+                        listOfUniqueNumbers.Add(chosenQuestionNumber);
+                    }
+                }
+            }
+
+            for (int i = 0; i < listOfUniqueNumbers.Count; i++)
+            {
+                int chosenQuestion = listOfUniqueNumbers[i];
 
                 switch (chosenQuestion)
                 {
@@ -133,35 +172,16 @@ namespace NEA_Prototype
                     default:
                         break;
                 }
-
-            }*/
-            List<int> listOfUniqueNumbers = new List<int>();
-
-            while (listOfUniqueNumbers.Count != numOfQuestions)
-            {
-                for (int i = 0; i < numOfQuestions + 1; i++)
-                {
-                    int chosenQuestion = rnd.Next(1, 11);
-
-                    if (!listOfUniqueNumbers.Contains(chosenQuestion))
-                    {
-                        listOfUniqueNumbers.Add(chosenQuestion);
-                    }
-                }
-            }
-
-            for (int i = 0; i < listOfUniqueNumbers.Count; i++)
-            {
-                int real = listOfUniqueNumbers[i];
-                Console.WriteLine(real);
             }
 
             Console.WriteLine("End of questions");
+            finishedTest = true;
         }
 
         static void Main(string[] args)
         {
 
+            Stopwatch Stopwatch = new Stopwatch();
 
             bool countdown = false;
             bool stopwatch = false;
@@ -234,16 +254,20 @@ namespace NEA_Prototype
                         if (option == 3)
                         {
                             stopwatch = true;
+                            back = true;
                         }
 
                         else if (option == 4)
                         {
                             countdown = true;
+                            back = true;
                         }
 
                         else if (option == 5)
                         {
                             Console.WriteLine("info");
+                            Console.ReadKey();
+                            back = true;
                         }
 
                         else if (option == 6)
@@ -276,19 +300,40 @@ namespace NEA_Prototype
 
             Console.ReadKey();
 
+            bool finishedTest = false;
+            DateTime elapsedTimeCountdown = new DateTime();
+
             Console.Clear();
 
             if (countdown == true)
             {
+                int mins = 1;
 
+                Countdown(mins, finishedTest, elapsedTimeCountdown);
             }
 
             else if (stopwatch == true)
             {
-
+                Stopwatch.Start();
             }
 
-            printQuestions(numOfQuestions);
+            printQuestions(numOfQuestions, finishedTest);
+
+            if (stopwatch == true)
+            {
+                Stopwatch.Stop();
+
+                TimeSpan elapsedTimeStopwatch = Stopwatch.Elapsed;
+
+                string time = String.Format("{0:00}:{1:00}:{2:00}", elapsedTimeStopwatch.Hours, elapsedTimeStopwatch.Minutes, elapsedTimeStopwatch.Seconds);
+
+                Console.WriteLine("Your time was " + time);
+            }
+
+            /*else if (countdown == true)
+            {
+                Console.WriteLine("Your time was " + elapsedTimeCountdown);
+            }*/
 
             Console.ReadKey();
 
