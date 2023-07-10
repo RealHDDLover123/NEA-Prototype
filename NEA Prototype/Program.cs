@@ -280,7 +280,7 @@ namespace NEA_Prototype
                 Console.Write(">");
 
                 int option = 3;
-                bool back = false;
+                bool backTimerChoice = false;
 
                 do
                 {
@@ -317,47 +317,97 @@ namespace NEA_Prototype
                         if (option == 3)
                         {
                             stopwatch = true;
-                            back = true;
+                            backTimerChoice = true;
                         }
 
                         else if (option == 4)
                         {
                             countdown = true;
-                            back = true;
+                            backTimerChoice = true;
                         }
 
                         else if (option == 5)
                         {
                             Console.WriteLine("info");
                             Console.ReadKey();
-                            back = true;
+                            backTimerChoice = true;
                         }
 
                         else if (option == 6)
                         {
                             Console.WriteLine("back");
-                            back = true;
+                            backTimerChoice = true;
                         }
                     }
 
-                } while (back != true);
+                } while (backTimerChoice != true);
 
             }
 
+            Console.Clear();
+
             Console.WriteLine("Do you want to have a normal sized test or a short test?");
-            string testSizeChoice = Console.ReadLine();
 
             int numOfQuestions = 0;
 
-            if (testSizeChoice == "normal")
-            {
-                numOfQuestions = 10;
-            }
+            Console.WriteLine("");
 
-            else if (testSizeChoice == "short")
+            Console.WriteLine("  normal");
+            Console.WriteLine("  short");
+
+            Console.CursorTop = 2;
+            Console.CursorLeft = 0;
+            Console.Write(">");
+
+            int testSizeChoice = 2;
+            bool backQuestionSize = false;
+
+            do
             {
-                numOfQuestions = 5;
-            }
+
+                ConsoleKeyInfo choice = Console.ReadKey(true);
+
+                if (choice.Key == ConsoleKey.DownArrow && testSizeChoice < 3)
+                {
+                    Console.CursorTop = testSizeChoice;
+                    Console.CursorLeft = 0;
+                    Console.Write(" ");
+                    testSizeChoice++;
+                    Console.CursorTop = testSizeChoice;
+                    Console.CursorLeft = 0;
+                    Console.Write(">");
+                }
+
+                else if (choice.Key == ConsoleKey.UpArrow && testSizeChoice > 2)
+                {
+                    Console.CursorTop = testSizeChoice;
+                    Console.CursorLeft = 0;
+                    Console.Write(" ");
+                    testSizeChoice--;
+                    Console.CursorTop = testSizeChoice;
+                    Console.CursorLeft = 0;
+                    Console.Write(">");
+                }
+
+                else if (choice.Key == ConsoleKey.Enter)
+                {
+
+                    Console.Clear();
+
+                    if (testSizeChoice == 2)
+                    {
+                        numOfQuestions = 10;
+                        backQuestionSize = true;
+                    }
+
+                    else if (testSizeChoice == 3)
+                    {
+                        numOfQuestions = 5;
+                        backQuestionSize = true;
+                    }
+                }
+
+            } while (backQuestionSize != true);
 
             Console.WriteLine("Questions will now be started");
 
@@ -366,7 +416,9 @@ namespace NEA_Prototype
             bool finishedTest = false;
 
             Console.Clear();
-        
+            
+            //stops here for some reason
+
             if (countdown == true || stopwatch == true)
             {
                 Stopwatch.Start();
