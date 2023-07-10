@@ -10,97 +10,159 @@ namespace NEA_Prototype
     internal class Program
     {
 
-        static void Countdown(int mins, bool finishedTest, DateTime elapsedTimeCountdown)
-        {
+        static void questionAnswerSelector()
+        {        
+            char userAnswer = ' ';
 
-            elapsedTimeCountdown = new DateTime(1000, 1, 1, 0, mins, 0);
+            Console.WriteLine("");
 
-            for (int i = 0; i <= mins * 60; i++)
+            Console.WriteLine("  a");
+            Console.WriteLine("  b");
+            Console.WriteLine("  c");
+            Console.WriteLine("  d");
+            Console.WriteLine("  e");
+
+            Console.CursorTop = 3;
+            Console.CursorLeft = 0;
+            Console.Write(">");
+
+            int option = 3;
+            bool back = false;
+
+            do
             {
-                //Console.Write(elapsedTime.ToString("\rmm:ss"));
-                if (finishedTest != true)
+
+                ConsoleKeyInfo choice = Console.ReadKey(true);
+
+                if (choice.Key == ConsoleKey.DownArrow && option < 7)
                 {
-                    elapsedTimeCountdown = elapsedTimeCountdown.AddSeconds(-1);
-                    System.Threading.Thread.Sleep(1000);
+                    Console.CursorTop = option;
+                    Console.CursorLeft = 0;
+                    Console.Write(" ");
+                    option++;
+                    Console.CursorTop = option;
+                    Console.CursorLeft = 0;
+                    Console.Write(">");
                 }
 
-                else
+                else if (choice.Key == ConsoleKey.UpArrow && option > 3)
                 {
-                    Console.WriteLine("Your time was " + elapsedTimeCountdown);
+                    Console.CursorTop = option;
+                    Console.CursorLeft = 0;
+                    Console.Write(" ");
+                    option--;
+                    Console.CursorTop = option;
+                    Console.CursorLeft = 0;
+                    Console.Write(">");
                 }
 
-            }
+                else if (choice.Key == ConsoleKey.Enter)
+                {
 
+                    Console.Clear();
+
+                    if (option == 3)
+                    {
+                        userAnswer = 'a';
+                        back = true;
+                    }
+
+                    else if (option == 4)
+                    {
+                        userAnswer = 'b';
+                        back = true;
+                    }
+
+                    else if (option == 5)
+                    {
+                        userAnswer = 'c';
+                        back = true;
+                    }
+
+                    else if (option == 6)
+                    {
+                        userAnswer = 'd';
+                        back = true;
+                    }
+
+                    else if (option == 7)
+                    {
+                        userAnswer = 'e';
+                        back = true;
+                    }
+                }
+
+            } while (back != true);
         }
 
         static void question1()
         {
             Console.WriteLine("question 1");
             Console.WriteLine("Answer is b");
-            char userAnswer = Console.ReadKey(true).KeyChar;
+            questionAnswerSelector();
         }
 
         static void question2()
         {
             Console.WriteLine("question 2");
             Console.WriteLine("Answer is a");
-            char userAnswer = Console.ReadKey(true).KeyChar;
+            questionAnswerSelector();
         }
 
         static void question3()
         {
             Console.WriteLine("question 3");
             Console.WriteLine("Answer is c");
-            char userAnswer = Console.ReadKey(true).KeyChar;
+            questionAnswerSelector();
         }
 
         static void question4()
         {
             Console.WriteLine("question 4");
             Console.WriteLine("Answer is e");
-            char userAnswer = Console.ReadKey(true).KeyChar;
+            questionAnswerSelector();
         }
 
         static void question5()
         {
             Console.WriteLine("question 5");
             Console.WriteLine("Answer is d");
-            char userAnswer = Console.ReadKey(true).KeyChar;
+            questionAnswerSelector();
         }
 
         static void question6()
         {
             Console.WriteLine("question 6");
             Console.WriteLine("Answer is d");
-            char userAnswer = Console.ReadKey(true).KeyChar;
+            questionAnswerSelector();
         }
 
         static void question7()
         {
             Console.WriteLine("question 7");
             Console.WriteLine("Answer is a");
-            char userAnswer = Console.ReadKey(true).KeyChar;
+            questionAnswerSelector();
         }
 
         static void question8()
         {
             Console.WriteLine("question 8");
             Console.WriteLine("Answer is b");
-            char userAnswer = Console.ReadKey(true).KeyChar;
+            questionAnswerSelector();
         }
 
         static void question9()
         {
             Console.WriteLine("question 9");
             Console.WriteLine("Answer is c");
-            char userAnswer = Console.ReadKey(true).KeyChar;
+            questionAnswerSelector();
         }
 
         static void question10()
         {
             Console.WriteLine("question 10");
             Console.WriteLine("Answer is b");
-            char userAnswer = Console.ReadKey(true).KeyChar;
+            questionAnswerSelector();
         }
 
 
@@ -172,6 +234,7 @@ namespace NEA_Prototype
                     default:
                         break;
                 }
+
             }
 
             Console.WriteLine("End of questions");
@@ -301,18 +364,10 @@ namespace NEA_Prototype
             Console.ReadKey();
 
             bool finishedTest = false;
-            DateTime elapsedTimeCountdown = new DateTime();
 
             Console.Clear();
-
-            if (countdown == true)
-            {
-                int mins = 1;
-
-                Countdown(mins, finishedTest, elapsedTimeCountdown);
-            }
-
-            else if (stopwatch == true)
+        
+            if (countdown == true || stopwatch == true)
             {
                 Stopwatch.Start();
             }
@@ -325,15 +380,21 @@ namespace NEA_Prototype
 
                 TimeSpan elapsedTimeStopwatch = Stopwatch.Elapsed;
 
-                string time = String.Format("{0:00}:{1:00}:{2:00}", elapsedTimeStopwatch.Hours, elapsedTimeStopwatch.Minutes, elapsedTimeStopwatch.Seconds);
+                string time = String.Format("{0:00}:{1:00}", elapsedTimeStopwatch.Minutes, elapsedTimeStopwatch.Seconds);
 
                 Console.WriteLine("Your time was " + time);
             }
 
-            /*else if (countdown == true)
+            else if (countdown == true)
             {
-                Console.WriteLine("Your time was " + elapsedTimeCountdown);
-            }*/
+                Stopwatch.Stop();
+
+                TimeSpan elapsedTimeCountdown = Stopwatch.Elapsed;
+
+                TimeSpan countdownTime = TimeSpan.FromMinutes(10) - elapsedTimeCountdown;
+
+                Console.WriteLine("Your time taken was " + countdownTime);
+            }
 
             Console.ReadKey();
 

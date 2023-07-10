@@ -35,11 +35,27 @@ namespace Timer_Tests
                 System.Threading.Thread.Sleep(1000);
             }*/
 
-            CountdownEvent Countdown = new CountdownEvent(mins * 60000);
+            /*CountdownEvent Countdown = new CountdownEvent(mins * 60000);
 
             System.Threading.Thread.Sleep(5000);
 
-            Console.WriteLine(Countdown.Signal());
+            Console.WriteLine(Countdown.Signal());*/
+
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+
+            System.Threading.Thread.Sleep(5000); //only used for tests
+
+            stopwatch.Stop();
+
+            TimeSpan elapsedTime = stopwatch.Elapsed;
+
+            string time = String.Format("{0:00}:{1:00}:{2:00}", elapsedTime.Hours, elapsedTime.Minutes, elapsedTime.Seconds);
+
+            TimeSpan countdownTime = TimeSpan.FromMinutes(10) - elapsedTime;
+
+            Console.WriteLine("Time is " + countdownTime);
 
         }
 

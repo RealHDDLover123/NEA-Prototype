@@ -6,3 +6,11 @@ D:\Github\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.csproj.SuggestedBindin
 D:\Github\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.csproj.CoreCompileInputs.cache
 D:\Github\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.exe
 D:\Github\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.pdb
+\\RHEA\HOME\2022\22AM3929\Documents\stupid github pt2\NEA-Prototype\Timer Tests\bin\Debug\Timer Tests.exe.config
+\\RHEA\HOME\2022\22AM3929\Documents\stupid github pt2\NEA-Prototype\Timer Tests\bin\Debug\Timer Tests.exe
+\\RHEA\HOME\2022\22AM3929\Documents\stupid github pt2\NEA-Prototype\Timer Tests\bin\Debug\Timer Tests.pdb
+\\RHEA\HOME\2022\22AM3929\Documents\stupid github pt2\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.csproj.AssemblyReference.cache
+\\RHEA\HOME\2022\22AM3929\Documents\stupid github pt2\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.csproj.SuggestedBindingRedirects.cache
+\\RHEA\HOME\2022\22AM3929\Documents\stupid github pt2\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.csproj.CoreCompileInputs.cache
+\\RHEA\HOME\2022\22AM3929\Documents\stupid github pt2\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.exe
+\\RHEA\HOME\2022\22AM3929\Documents\stupid github pt2\NEA-Prototype\Timer Tests\obj\Debug\Timer Tests.pdb
