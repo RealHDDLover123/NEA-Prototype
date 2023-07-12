@@ -9,10 +9,8 @@ namespace NEA_Prototype
 {
     internal class Program
     {
-
-        static void questionAnswerSelector()
-        {        
-            char userAnswer = ' ';
+        static char questionAnswerSelector(char userAnswer)
+        {
 
             Console.WriteLine("");
 
@@ -29,9 +27,8 @@ namespace NEA_Prototype
             int option = 3;
             bool back = false;
 
-            do
+            while (back != true)
             {
-
                 ConsoleKeyInfo choice = Console.ReadKey(true);
 
                 if (choice.Key == ConsoleKey.DownArrow && option < 7)
@@ -64,112 +61,194 @@ namespace NEA_Prototype
                     if (option == 3)
                     {
                         userAnswer = 'a';
-                        back = true;
                     }
 
                     else if (option == 4)
                     {
                         userAnswer = 'b';
-                        back = true;
                     }
 
                     else if (option == 5)
                     {
                         userAnswer = 'c';
-                        back = true;
                     }
 
                     else if (option == 6)
                     {
                         userAnswer = 'd';
-                        back = true;
                     }
 
                     else if (option == 7)
                     {
                         userAnswer = 'e';
-                        back = true;
                     }
-                }
 
-            } while (back != true);
+                    back = true;
+
+                }
+            }
+
+            return userAnswer;
+
         }
 
-        static void question1()
+        static int question1(int correct, char userAnswer)
         {
             Console.WriteLine("question 1");
             Console.WriteLine("Answer is b");
-            questionAnswerSelector();
+            userAnswer = questionAnswerSelector(userAnswer);
+
+            if (userAnswer == 'b')
+            {
+                correct++;
+            }
+
+            return correct;
+
         }
 
-        static void question2()
+        static int question2(int correct, char userAnswer)
         {
             Console.WriteLine("question 2");
             Console.WriteLine("Answer is a");
-            questionAnswerSelector();
+            userAnswer = questionAnswerSelector(userAnswer);
+
+            if (userAnswer == 'a')
+            {
+                correct++;
+            }
+
+            return correct;
+
         }
 
-        static void question3()
+        static int question3(int correct, char userAnswer)
         {
             Console.WriteLine("question 3");
             Console.WriteLine("Answer is c");
-            questionAnswerSelector();
+            userAnswer = questionAnswerSelector(userAnswer);
+
+            if (userAnswer == 'c')
+            {
+                correct++;
+            }
+
+            return correct;
+
         }
 
-        static void question4()
+        static int question4(int correct, char userAnswer)
         {
             Console.WriteLine("question 4");
             Console.WriteLine("Answer is e");
-            questionAnswerSelector();
+            userAnswer = questionAnswerSelector(userAnswer);
+
+            if (userAnswer == 'e')
+            {
+                correct++;
+            }
+
+            return correct;
+
         }
 
-        static void question5()
+        static int question5(int correct, char userAnswer)
         {
             Console.WriteLine("question 5");
             Console.WriteLine("Answer is d");
-            questionAnswerSelector();
+            userAnswer = questionAnswerSelector(userAnswer);
+
+            if (userAnswer == 'd')
+            {
+                correct++;
+            }
+
+            return correct;
+
         }
 
-        static void question6()
+        static int question6(int correct, char userAnswer)
         {
             Console.WriteLine("question 6");
             Console.WriteLine("Answer is d");
-            questionAnswerSelector();
+            userAnswer = questionAnswerSelector(userAnswer);
+
+            if (userAnswer == 'd')
+            {
+                correct++;
+            }
+
+            return correct;
+
         }
 
-        static void question7()
+        static int question7(int correct, char userAnswer)
         {
             Console.WriteLine("question 7");
             Console.WriteLine("Answer is a");
-            questionAnswerSelector();
+            userAnswer = questionAnswerSelector(userAnswer);
+
+            if (userAnswer == 'a')
+            {
+                correct++;
+            }
+
+            return correct;
+
         }
 
-        static void question8()
+        static int question8(int correct, char userAnswer)
         {
             Console.WriteLine("question 8");
             Console.WriteLine("Answer is b");
-            questionAnswerSelector();
+            userAnswer = questionAnswerSelector(userAnswer);
+
+            if (userAnswer == 'b')
+            {
+                correct++;
+            }
+
+            return correct;
+
         }
 
-        static void question9()
+        static int question9(int correct, char userAnswer)
         {
             Console.WriteLine("question 9");
             Console.WriteLine("Answer is c");
-            questionAnswerSelector();
+            userAnswer = questionAnswerSelector(userAnswer);
+
+            if (userAnswer == 'c')
+            {
+                correct++;
+            }
+
+            return correct;
+
         }
 
-        static void question10()
+        static int question10(int correct, char userAnswer)
         {
             Console.WriteLine("question 10");
             Console.WriteLine("Answer is b");
-            questionAnswerSelector();
+            userAnswer = questionAnswerSelector(userAnswer);
+
+            if (userAnswer == 'b')
+            {
+                correct++;
+            }
+
+            return correct;
+
         }
 
 
-        static void printQuestions(int numOfQuestions, bool finishedTest)
+        static int printQuestions(int numOfQuestions, bool finishedTest, int correct)
         {
             Random rnd = new Random();
-            
+
+            char userAnswer = ' ';
+
             List<int> listOfUniqueNumbers = new List<int>();
 
             while (listOfUniqueNumbers.Count != numOfQuestions)
@@ -192,43 +271,43 @@ namespace NEA_Prototype
                 switch (chosenQuestion)
                 {
                     case 1:
-                        question1();
+                        correct = question1(correct, userAnswer);
                         break;
 
                     case 2:
-                        question2();
+                        correct = question2(correct, userAnswer);
                         break;
 
                     case 3:
-                        question3();
+                        correct = question3(correct, userAnswer);
                         break;
 
                     case 4:
-                        question4();
+                        correct = question4(correct, userAnswer);
                         break;
 
                     case 5:
-                        question5();
+                        correct = question5(correct, userAnswer);
                         break;
 
                     case 6:
-                        question6();
+                        correct = question6(correct, userAnswer);
                         break;
 
                     case 7:
-                        question7();
+                        correct = question7(correct, userAnswer);
                         break;
 
                     case 8:
-                        question8();
+                        correct = question8(correct, userAnswer);
                         break;
 
                     case 9:
-                        question9();
+                        correct = question9(correct, userAnswer);
                         break;
 
                     case 10:
-                        question10();
+                        correct = question10(correct, userAnswer);
                         break;
 
                     default:
@@ -238,11 +317,16 @@ namespace NEA_Prototype
             }
 
             Console.WriteLine("End of questions");
+
+            return correct;
+
             finishedTest = true;
         }
 
         static void Main(string[] args)
         {
+
+            int correct = 0;
 
             Stopwatch Stopwatch = new Stopwatch();
 
@@ -282,9 +366,8 @@ namespace NEA_Prototype
                 int option = 3;
                 bool backTimerChoice = false;
 
-                do
+                while (backTimerChoice != true)
                 {
-
                     ConsoleKeyInfo choice = Console.ReadKey(true);
 
                     if (choice.Key == ConsoleKey.DownArrow && option < 6)
@@ -317,30 +400,28 @@ namespace NEA_Prototype
                         if (option == 3)
                         {
                             stopwatch = true;
-                            backTimerChoice = true;
                         }
 
                         else if (option == 4)
                         {
                             countdown = true;
-                            backTimerChoice = true;
                         }
 
                         else if (option == 5)
                         {
                             Console.WriteLine("info");
                             Console.ReadKey();
-                            backTimerChoice = true;
                         }
 
                         else if (option == 6)
                         {
                             Console.WriteLine("back");
-                            backTimerChoice = true;
                         }
-                    }
 
-                } while (backTimerChoice != true);
+                        backTimerChoice = true;
+
+                    }
+                }
 
             }
 
@@ -352,8 +433,8 @@ namespace NEA_Prototype
 
             Console.WriteLine("");
 
-            Console.WriteLine("  normal");
-            Console.WriteLine("  short");
+            Console.WriteLine("  Normal");
+            Console.WriteLine("  Short");
 
             Console.CursorTop = 2;
             Console.CursorLeft = 0;
@@ -362,9 +443,8 @@ namespace NEA_Prototype
             int testSizeChoice = 2;
             bool backQuestionSize = false;
 
-            do
+            while (backQuestionSize != true)
             {
-
                 ConsoleKeyInfo choice = Console.ReadKey(true);
 
                 if (choice.Key == ConsoleKey.DownArrow && testSizeChoice < 3)
@@ -397,17 +477,17 @@ namespace NEA_Prototype
                     if (testSizeChoice == 2)
                     {
                         numOfQuestions = 10;
-                        backQuestionSize = true;
                     }
 
                     else if (testSizeChoice == 3)
                     {
                         numOfQuestions = 5;
-                        backQuestionSize = true;
                     }
-                }
 
-            } while (backQuestionSize != true);
+                    backQuestionSize = true;
+
+                }
+            }
 
             Console.WriteLine("Questions will now be started");
 
@@ -424,7 +504,7 @@ namespace NEA_Prototype
                 Stopwatch.Start();
             }
 
-            printQuestions(numOfQuestions, finishedTest);
+            correct = printQuestions(numOfQuestions, finishedTest, correct);
 
             if (stopwatch == true)
             {
@@ -447,6 +527,11 @@ namespace NEA_Prototype
 
                 Console.WriteLine("Your time taken was " + countdownTime);
             }
+
+            int percentageCorrect1 = correct / numOfQuestions;
+            int percentageCorrect2 = percentageCorrect1 * 100;
+
+            Console.WriteLine("You got " + correct + " (" + percentageCorrect2 + "%) " + "answers correct!");
 
             Console.ReadKey();
 
