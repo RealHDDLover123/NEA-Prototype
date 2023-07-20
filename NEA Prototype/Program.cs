@@ -9,7 +9,15 @@ namespace NEA_Prototype
 {
     internal class Program
     {
-        static char questionAnswerSelector(char userAnswer)
+
+        static char skip(int skips)
+        {
+            skips--;
+
+            return (char)skips;
+        }
+
+        static char questionAnswerSelector(char userAnswer, int skips)
         {
 
             Console.WriteLine("");
@@ -19,6 +27,13 @@ namespace NEA_Prototype
             Console.WriteLine("  c");
             Console.WriteLine("  d");
             Console.WriteLine("  e");
+
+            if (skips != 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("  SKIP");
+                Console.ResetColor();
+            }
 
             Console.CursorTop = 3;
             Console.CursorLeft = 0;
@@ -31,7 +46,7 @@ namespace NEA_Prototype
             {
                 ConsoleKeyInfo choice = Console.ReadKey(true);
 
-                if (choice.Key == ConsoleKey.DownArrow && option < 7)
+                if (choice.Key == ConsoleKey.DownArrow && option < 8)
                 {
                     Console.CursorTop = option;
                     Console.CursorLeft = 0;
@@ -58,47 +73,31 @@ namespace NEA_Prototype
 
                     Console.Clear();
 
-                    if (option == 3)
+                    if (userAnswer == 8)
                     {
-                        userAnswer = 'a';
+                        //skip(skips);
+                        skips--;
                     }
 
-                    else if (option == 4)
-                    {
-                        userAnswer = 'b';
-                    }
-
-                    else if (option == 5)
-                    {
-                        userAnswer = 'c';
-                    }
-
-                    else if (option == 6)
-                    {
-                        userAnswer = 'd';
-                    }
-
-                    else if (option == 7)
-                    {
-                        userAnswer = 'e';
-                    }
-
+                    userAnswer = (char)(option + 62);
                     back = true;
 
                 }
             }
 
             return userAnswer;
-
+            return (char)skips;
         }
 
-        static int question1(int correct, char userAnswer)
+        //the way these questions are structured is just as a proof of concept, this will be done differently when its in the final program
+
+        static int question1(int correct, char userAnswer, int skips)
         {
             Console.WriteLine("question 1");
             Console.WriteLine("Answer is b");
-            userAnswer = questionAnswerSelector(userAnswer);
+            userAnswer = questionAnswerSelector(userAnswer, skips);
 
-            if (userAnswer == 'b')
+            if (userAnswer == 'B')
             {
                 correct++;
             }
@@ -107,13 +106,13 @@ namespace NEA_Prototype
 
         }
 
-        static int question2(int correct, char userAnswer)
+        static int question2(int correct, char userAnswer, int skips)
         {
             Console.WriteLine("question 2");
             Console.WriteLine("Answer is a");
-            userAnswer = questionAnswerSelector(userAnswer);
+            userAnswer = questionAnswerSelector(userAnswer, skips);
 
-            if (userAnswer == 'a')
+            if (userAnswer == 'A')
             {
                 correct++;
             }
@@ -122,13 +121,13 @@ namespace NEA_Prototype
 
         }
 
-        static int question3(int correct, char userAnswer)
+        static int question3(int correct, char userAnswer, int skips)
         {
             Console.WriteLine("question 3");
             Console.WriteLine("Answer is c");
-            userAnswer = questionAnswerSelector(userAnswer);
+            userAnswer = questionAnswerSelector(userAnswer, skips);
 
-            if (userAnswer == 'c')
+            if (userAnswer == 'C')
             {
                 correct++;
             }
@@ -137,13 +136,13 @@ namespace NEA_Prototype
 
         }
 
-        static int question4(int correct, char userAnswer)
+        static int question4(int correct, char userAnswer, int skips)
         {
             Console.WriteLine("question 4");
             Console.WriteLine("Answer is e");
-            userAnswer = questionAnswerSelector(userAnswer);
+            userAnswer = questionAnswerSelector(userAnswer, skips);
 
-            if (userAnswer == 'e')
+            if (userAnswer == 'E')
             {
                 correct++;
             }
@@ -152,13 +151,13 @@ namespace NEA_Prototype
 
         }
 
-        static int question5(int correct, char userAnswer)
+        static int question5(int correct, char userAnswer, int skips)
         {
             Console.WriteLine("question 5");
             Console.WriteLine("Answer is d");
-            userAnswer = questionAnswerSelector(userAnswer);
+            userAnswer = questionAnswerSelector(userAnswer, skips);
 
-            if (userAnswer == 'd')
+            if (userAnswer == 'D')
             {
                 correct++;
             }
@@ -167,13 +166,13 @@ namespace NEA_Prototype
 
         }
 
-        static int question6(int correct, char userAnswer)
+        static int question6(int correct, char userAnswer, int skips)
         {
             Console.WriteLine("question 6");
             Console.WriteLine("Answer is d");
-            userAnswer = questionAnswerSelector(userAnswer);
+            userAnswer = questionAnswerSelector(userAnswer, skips);
 
-            if (userAnswer == 'd')
+            if (userAnswer == 'D')
             {
                 correct++;
             }
@@ -182,13 +181,13 @@ namespace NEA_Prototype
 
         }
 
-        static int question7(int correct, char userAnswer)
+        static int question7(int correct, char userAnswer, int skips)
         {
             Console.WriteLine("question 7");
             Console.WriteLine("Answer is a");
-            userAnswer = questionAnswerSelector(userAnswer);
+            userAnswer = questionAnswerSelector(userAnswer, skips);
 
-            if (userAnswer == 'a')
+            if (userAnswer == 'A')
             {
                 correct++;
             }
@@ -197,13 +196,13 @@ namespace NEA_Prototype
 
         }
 
-        static int question8(int correct, char userAnswer)
+        static int question8(int correct, char userAnswer, int skips)
         {
             Console.WriteLine("question 8");
             Console.WriteLine("Answer is b");
-            userAnswer = questionAnswerSelector(userAnswer);
+            userAnswer = questionAnswerSelector(userAnswer, skips);
 
-            if (userAnswer == 'b')
+            if (userAnswer == 'B')
             {
                 correct++;
             }
@@ -212,13 +211,13 @@ namespace NEA_Prototype
 
         }
 
-        static int question9(int correct, char userAnswer)
+        static int question9(int correct, char userAnswer, int skips)
         {
             Console.WriteLine("question 9");
             Console.WriteLine("Answer is c");
-            userAnswer = questionAnswerSelector(userAnswer);
+            userAnswer = questionAnswerSelector(userAnswer, skips);
 
-            if (userAnswer == 'c')
+            if (userAnswer == 'C')
             {
                 correct++;
             }
@@ -227,13 +226,13 @@ namespace NEA_Prototype
 
         }
 
-        static int question10(int correct, char userAnswer)
+        static int question10(int correct, char userAnswer, int skips)
         {
             Console.WriteLine("question 10");
             Console.WriteLine("Answer is b");
-            userAnswer = questionAnswerSelector(userAnswer);
+            userAnswer = questionAnswerSelector(userAnswer, skips);
 
-            if (userAnswer == 'b')
+            if (userAnswer == 'B')
             {
                 correct++;
             }
@@ -243,7 +242,7 @@ namespace NEA_Prototype
         }
 
 
-        static int printQuestions(int numOfQuestions, bool finishedTest, int correct)
+        static int printQuestions(int numOfQuestions, bool finishedTest, int correct, int skips)
         {
             Random rnd = new Random();
 
@@ -271,48 +270,68 @@ namespace NEA_Prototype
                 switch (chosenQuestion)
                 {
                     case 1:
-                        correct = question1(correct, userAnswer);
+                        correct = question1(correct, userAnswer, skips);
                         break;
 
                     case 2:
-                        correct = question2(correct, userAnswer);
+                        correct = question2(correct, userAnswer, skips);
                         break;
 
                     case 3:
-                        correct = question3(correct, userAnswer);
+                        correct = question3(correct, userAnswer, skips);
                         break;
 
                     case 4:
-                        correct = question4(correct, userAnswer);
+                        correct = question4(correct, userAnswer, skips);
                         break;
 
                     case 5:
-                        correct = question5(correct, userAnswer);
+                        correct = question5(correct, userAnswer, skips);
                         break;
 
                     case 6:
-                        correct = question6(correct, userAnswer);
+                        correct = question6(correct, userAnswer, skips);
                         break;
 
                     case 7:
-                        correct = question7(correct, userAnswer);
+                        correct = question7(correct, userAnswer, skips);
                         break;
 
                     case 8:
-                        correct = question8(correct, userAnswer);
+                        correct = question8(correct, userAnswer, skips);
                         break;
 
                     case 9:
-                        correct = question9(correct, userAnswer);
+                        correct = question9(correct, userAnswer, skips);
                         break;
 
                     case 10:
-                        correct = question10(correct, userAnswer);
+                        correct = question10(correct, userAnswer, skips);
                         break;
 
                     default:
                         break;
                 }
+
+                /*Dictionary<int, Func<int, char>> questionProperties = new Dictionary<int, Func<int, char>>
+                {
+                    { 1, question1 },
+                    { 2, question2 },
+                    { 3, question3(correct, userAnswer) },
+                    { 4, question4(correct, userAnswer) },
+                    { 5, question5(correct, userAnswer) },
+                    { 6, question6(correct, userAnswer) },
+                    { 7, question7(correct, userAnswer) },
+                    { 8, question8(correct, userAnswer) },
+                    { 9, question9(correct, userAnswer) },
+                    { 10, question10(correct, userAnswer) }
+                };
+
+                if (questionProperties.TryGetValue(chosenQuestion, out Func<int, char> questionFunction))
+                {
+                    // Call the corresponding question function
+                    correct = questionFunction(correct, userAnswer);
+                }*/
 
             }
 
@@ -326,17 +345,73 @@ namespace NEA_Prototype
         static void Main(string[] args)
         {
 
+            int skips = 0;
+
             int correct = 0;
 
             Stopwatch Stopwatch = new Stopwatch();
 
             bool countdown = false;
             bool stopwatch = false;
+            bool timerInfo = false;
 
-            Console.WriteLine("Do you wish to have a timer (y/n)?");
-            char timerChoice = Console.ReadKey(true).KeyChar;
+            Console.WriteLine("Do you wish to have a timer?");
+            bool timerChoice = false;
 
-            if (timerChoice == 'y' || timerChoice == 'Y')
+            Console.WriteLine("");
+
+            Console.WriteLine("  Yes");
+            Console.WriteLine("  No");
+
+            Console.CursorTop = 2;
+            Console.CursorLeft = 0;
+            Console.Write(">");
+
+            int timerOption = 2;
+            bool backTimerChoice = false;
+
+            while (backTimerChoice != true)
+            {
+                ConsoleKeyInfo choice = Console.ReadKey(true);
+
+                if (choice.Key == ConsoleKey.DownArrow && timerOption < 3)
+                {
+                    Console.CursorTop = timerOption;
+                    Console.CursorLeft = 0;
+                    Console.Write(" ");
+                    timerOption++;
+                    Console.CursorTop = timerOption;
+                    Console.CursorLeft = 0;
+                    Console.Write(">");
+                }
+
+                else if (choice.Key == ConsoleKey.UpArrow && timerOption > 2)
+                {
+                    Console.CursorTop = timerOption;
+                    Console.CursorLeft = 0;
+                    Console.Write(" ");
+                    timerOption--;
+                    Console.CursorTop = timerOption;
+                    Console.CursorLeft = 0;
+                    Console.Write(">");
+                }
+
+                else if (choice.Key == ConsoleKey.Enter)
+                {
+
+                    Console.Clear();
+
+                    if (timerOption == 2)
+                    {
+                        timerChoice = true;
+                    }
+
+                    backTimerChoice = true;
+
+                }
+            }
+
+            if (timerChoice == true)
             {
 
                 Console.Write("Do you wish to have either a ");
@@ -357,37 +432,37 @@ namespace NEA_Prototype
                 Console.WriteLine("  Stopwatch");
                 Console.WriteLine("  Countdown");
                 Console.WriteLine("  Info");
-                Console.WriteLine("  Back");
+                Console.WriteLine("  Cancel");
 
-                Console.CursorTop = 3;
+                Console.CursorTop = 2;
                 Console.CursorLeft = 0;
                 Console.Write(">");
 
-                int option = 3;
-                bool backTimerChoice = false;
+                int specificTimerOption = 2;
+                bool backSpecificTimerChoice = false;
 
-                while (backTimerChoice != true)
+                while (backSpecificTimerChoice != true && timerInfo != true)
                 {
                     ConsoleKeyInfo choice = Console.ReadKey(true);
 
-                    if (choice.Key == ConsoleKey.DownArrow && option < 6)
+                    if (choice.Key == ConsoleKey.DownArrow && specificTimerOption < 5)
                     {
-                        Console.CursorTop = option;
+                        Console.CursorTop = specificTimerOption;
                         Console.CursorLeft = 0;
                         Console.Write(" ");
-                        option++;
-                        Console.CursorTop = option;
+                        specificTimerOption++;
+                        Console.CursorTop = specificTimerOption;
                         Console.CursorLeft = 0;
                         Console.Write(">");
                     }
 
-                    else if (choice.Key == ConsoleKey.UpArrow && option > 3)
+                    else if (choice.Key == ConsoleKey.UpArrow && specificTimerOption > 2)
                     {
-                        Console.CursorTop = option;
+                        Console.CursorTop = specificTimerOption;
                         Console.CursorLeft = 0;
                         Console.Write(" ");
-                        option--;
-                        Console.CursorTop = option;
+                        specificTimerOption--;
+                        Console.CursorTop = specificTimerOption;
                         Console.CursorLeft = 0;
                         Console.Write(">");
                     }
@@ -397,28 +472,37 @@ namespace NEA_Prototype
 
                         Console.Clear();
 
-                        if (option == 3)
+                        if (specificTimerOption == 2)
                         {
                             stopwatch = true;
                         }
 
-                        else if (option == 4)
+                        else if (specificTimerOption == 3)
                         {
                             countdown = true;
                         }
 
-                        else if (option == 5)
+                        else if (specificTimerOption == 4)
                         {
-                            Console.WriteLine("info");
+
+                            //timerInfo = true;
+
+                            //MAKE IT SO THIS THING GOES BACK TO THE OPTIONS AGAIN (e.g. line 314)
+
+                            Console.WriteLine("Stopwatch");
+                            Console.WriteLine();
+                            Console.WriteLine("A stopwatch is used to measure the elapsed time of an event, and if you select this option you will see how long you took to finish the test (e.g. 01:08, being 1 minute 8 seconds.).");
+                            
+                            Console.WriteLine();
+                            Console.WriteLine();
+
+                            Console.WriteLine("Countdown");
+                            Console.WriteLine();
+                            Console.WriteLine("A countdown is a timer that counts backward from a specified duration to zero, and if you select this option you will see how long you had left to finish the test (e.g. 00:02:45, being 2 minutes 45 seconds remaining.). ");
                             Console.ReadKey();
                         }
 
-                        else if (option == 6)
-                        {
-                            Console.WriteLine("back");
-                        }
-
-                        backTimerChoice = true;
+                        backSpecificTimerChoice = true;
 
                     }
                 }
@@ -477,11 +561,13 @@ namespace NEA_Prototype
                     if (testSizeChoice == 2)
                     {
                         numOfQuestions = 10;
+                        skips = 3;
                     }
 
                     else if (testSizeChoice == 3)
                     {
                         numOfQuestions = 5;
+                        skips = 1;
                     }
 
                     backQuestionSize = true;
@@ -504,7 +590,7 @@ namespace NEA_Prototype
                 Stopwatch.Start();
             }
 
-            correct = printQuestions(numOfQuestions, finishedTest, correct);
+            correct = printQuestions(numOfQuestions, finishedTest, correct, skips);
 
             if (stopwatch == true)
             {
@@ -525,13 +611,13 @@ namespace NEA_Prototype
 
                 TimeSpan countdownTime = TimeSpan.FromMinutes(10) - elapsedTimeCountdown;
 
-                Console.WriteLine("Your time taken was " + countdownTime);
+                Console.WriteLine("The time left was " + countdownTime);
             }
 
-            int percentageCorrect1 = correct / numOfQuestions;
-            int percentageCorrect2 = percentageCorrect1 * 100;
 
-            Console.WriteLine("You got " + correct + " (" + percentageCorrect2 + "%) " + "answers correct!");
+            double percentageCorrect = (Convert.ToDouble(correct) / Convert.ToDouble(numOfQuestions)) * 100;
+
+            Console.WriteLine("You got " + correct + " (" + percentageCorrect + "%) " + "answers correct, and had " + skips + " skips remaining!");
 
             Console.ReadKey();
 
