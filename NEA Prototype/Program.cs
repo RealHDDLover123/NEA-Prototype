@@ -10,25 +10,19 @@ namespace NEA_Prototype
     internal class Program
     {
 
-        static char skip(int skips)
+        static string questionAnswerSelector(int questionNumber, ref int skips, Dictionary<int, string[]> questions)
         {
-            skips--;
-
-            return (char)skips;
-        }
-
-        static char questionAnswerSelector(char userAnswer, int skips)
-        {
+            string userAnswer = "";
 
             Console.WriteLine("");
 
-            Console.WriteLine("  a");
-            Console.WriteLine("  b");
-            Console.WriteLine("  c");
-            Console.WriteLine("  d");
-            Console.WriteLine("  e");
+            Console.WriteLine($"  a) {questions[questionNumber][2]}");
+            Console.WriteLine($"  b) {questions[questionNumber][3]}");
+            Console.WriteLine($"  c) {questions[questionNumber][4]}");
+            Console.WriteLine($"  d) {questions[questionNumber][5]}");
+            Console.WriteLine($"  e) {questions[questionNumber][6]}");
 
-            if (skips != 0)
+            if (skips > 0)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("  SKIP");
@@ -73,31 +67,28 @@ namespace NEA_Prototype
 
                     Console.Clear();
 
-                    if (userAnswer == 8)
+                    if (option == 8)
                     {
-                        //skip(skips);
                         skips--;
                     }
 
-                    userAnswer = (char)(option + 62);
+                    userAnswer += (char)(option + 62);
+                    userAnswer = userAnswer.ToLower();
                     back = true;
 
                 }
             }
 
             return userAnswer;
-            return (char)skips;
         }
 
-        //the way these questions are structured is just as a proof of concept, this will be done differently when its in the final program
-
-        static int question1(int correct, char userAnswer, int skips)
+        static int Question(Dictionary<int, string[]> questions, ref int skips, int correct, int questionNumber)
         {
-            Console.WriteLine("question 1");
-            Console.WriteLine("Answer is b");
-            userAnswer = questionAnswerSelector(userAnswer, skips);
+            System.Console.WriteLine(questions[questionNumber][0]);
+            System.Console.WriteLine(questions[questionNumber][1]);
+            string userAnswer = questionAnswerSelector(questionNumber, ref skips, questions);
 
-            if (userAnswer == 'B')
+            if (userAnswer == questions[questionNumber][1])
             {
                 correct++;
             }
@@ -106,153 +97,15 @@ namespace NEA_Prototype
 
         }
 
-        static int question2(int correct, char userAnswer, int skips)
-        {
-            Console.WriteLine("question 2");
-            Console.WriteLine("Answer is a");
-            userAnswer = questionAnswerSelector(userAnswer, skips);
-
-            if (userAnswer == 'A')
-            {
-                correct++;
-            }
-
-            return correct;
-
-        }
-
-        static int question3(int correct, char userAnswer, int skips)
-        {
-            Console.WriteLine("question 3");
-            Console.WriteLine("Answer is c");
-            userAnswer = questionAnswerSelector(userAnswer, skips);
-
-            if (userAnswer == 'C')
-            {
-                correct++;
-            }
-
-            return correct;
-
-        }
-
-        static int question4(int correct, char userAnswer, int skips)
-        {
-            Console.WriteLine("question 4");
-            Console.WriteLine("Answer is e");
-            userAnswer = questionAnswerSelector(userAnswer, skips);
-
-            if (userAnswer == 'E')
-            {
-                correct++;
-            }
-
-            return correct;
-
-        }
-
-        static int question5(int correct, char userAnswer, int skips)
-        {
-            Console.WriteLine("question 5");
-            Console.WriteLine("Answer is d");
-            userAnswer = questionAnswerSelector(userAnswer, skips);
-
-            if (userAnswer == 'D')
-            {
-                correct++;
-            }
-
-            return correct;
-
-        }
-
-        static int question6(int correct, char userAnswer, int skips)
-        {
-            Console.WriteLine("question 6");
-            Console.WriteLine("Answer is d");
-            userAnswer = questionAnswerSelector(userAnswer, skips);
-
-            if (userAnswer == 'D')
-            {
-                correct++;
-            }
-
-            return correct;
-
-        }
-
-        static int question7(int correct, char userAnswer, int skips)
-        {
-            Console.WriteLine("question 7");
-            Console.WriteLine("Answer is a");
-            userAnswer = questionAnswerSelector(userAnswer, skips);
-
-            if (userAnswer == 'A')
-            {
-                correct++;
-            }
-
-            return correct;
-
-        }
-
-        static int question8(int correct, char userAnswer, int skips)
-        {
-            Console.WriteLine("question 8");
-            Console.WriteLine("Answer is b");
-            userAnswer = questionAnswerSelector(userAnswer, skips);
-
-            if (userAnswer == 'B')
-            {
-                correct++;
-            }
-
-            return correct;
-
-        }
-
-        static int question9(int correct, char userAnswer, int skips)
-        {
-            Console.WriteLine("question 9");
-            Console.WriteLine("Answer is c");
-            userAnswer = questionAnswerSelector(userAnswer, skips);
-
-            if (userAnswer == 'C')
-            {
-                correct++;
-            }
-
-            return correct;
-
-        }
-
-        static int question10(int correct, char userAnswer, int skips)
-        {
-            Console.WriteLine("question 10");
-            Console.WriteLine("Answer is b");
-            userAnswer = questionAnswerSelector(userAnswer, skips);
-
-            if (userAnswer == 'B')
-            {
-                correct++;
-            }
-
-            return correct;
-
-        }
-
-
-        static int printQuestions(int numOfQuestions, bool finishedTest, int correct, int skips)
+        static int printQuestions(int numOfQuestions, bool finishedTest, int correct, ref int skips)
         {
             Random rnd = new Random();
 
-            char userAnswer = ' ';
-
             List<int> listOfUniqueNumbers = new List<int>();
 
-            while (listOfUniqueNumbers.Count != numOfQuestions)
+            while (listOfUniqueNumbers.Count < numOfQuestions)
             {
-                for (int i = 0; i < numOfQuestions + 1; i++)
+                for (int i = 0; i < numOfQuestions + 1 - listOfUniqueNumbers.Count; i++)
                 {
                     int chosenQuestionNumber = rnd.Next(1, 11 /* this number should be the maximum possible amount of questions + 1 */);
 
@@ -263,75 +116,27 @@ namespace NEA_Prototype
                 }
             }
 
+            Dictionary<int, string[]> questions = new Dictionary<int, string[]>()
+            {
+                                              // v short answer (single letter a-e)
+                {1, new string[] {"Question 1", "a", "A answer", "B answer", "C answer", "D answer", "E answer"}},
+                {2, new string[] {"Question 2", "b", "A answer", "B answer", "C answer", "D answer", "E answer"}},
+                {3, new string[] {"Question 3", "c", "A answer", "B answer", "C answer", "D answer", "E answer"}},
+                {4, new string[] {"Question 4", "d", "A answer", "B answer", "C answer", "D answer", "E answer"}},
+                {5, new string[] {"Question 5", "e", "A answer", "B answer", "C answer", "D answer", "E answer"}},
+                {6, new string[] {"Question 6", "b", "A answer", "B answer", "C answer", "D answer", "E answer"}},
+                {7, new string[] {"Question 7", "c", "A answer", "B answer", "C answer", "D answer", "E answer"}},
+                {8, new string[] {"Question 8", "a", "A answer", "B answer", "C answer", "D answer", "E answer"}},
+                {9, new string[] {"Question 9", "e", "A answer", "B answer", "C answer", "D answer", "E answer"}},
+                {10, new string[] {"Question 10", "d", "A answer", "B answer", "C answer", "D answer", "E answer"}}
+
+            };
+
             for (int i = 0; i < listOfUniqueNumbers.Count; i++)
             {
                 int chosenQuestion = listOfUniqueNumbers[i];
 
-                switch (chosenQuestion)
-                {
-                    case 1:
-                        correct = question1(correct, userAnswer, skips);
-                        break;
-
-                    case 2:
-                        correct = question2(correct, userAnswer, skips);
-                        break;
-
-                    case 3:
-                        correct = question3(correct, userAnswer, skips);
-                        break;
-
-                    case 4:
-                        correct = question4(correct, userAnswer, skips);
-                        break;
-
-                    case 5:
-                        correct = question5(correct, userAnswer, skips);
-                        break;
-
-                    case 6:
-                        correct = question6(correct, userAnswer, skips);
-                        break;
-
-                    case 7:
-                        correct = question7(correct, userAnswer, skips);
-                        break;
-
-                    case 8:
-                        correct = question8(correct, userAnswer, skips);
-                        break;
-
-                    case 9:
-                        correct = question9(correct, userAnswer, skips);
-                        break;
-
-                    case 10:
-                        correct = question10(correct, userAnswer, skips);
-                        break;
-
-                    default:
-                        break;
-                }
-
-                /*Dictionary<int, Func<int, char>> questionProperties = new Dictionary<int, Func<int, char>>
-                {
-                    { 1, question1 },
-                    { 2, question2 },
-                    { 3, question3(correct, userAnswer) },
-                    { 4, question4(correct, userAnswer) },
-                    { 5, question5(correct, userAnswer) },
-                    { 6, question6(correct, userAnswer) },
-                    { 7, question7(correct, userAnswer) },
-                    { 8, question8(correct, userAnswer) },
-                    { 9, question9(correct, userAnswer) },
-                    { 10, question10(correct, userAnswer) }
-                };
-
-                if (questionProperties.TryGetValue(chosenQuestion, out Func<int, char> questionFunction))
-                {
-                    // Call the corresponding question function
-                    correct = questionFunction(correct, userAnswer);
-                }*/
+                correct = Question(questions, ref skips, correct, listOfUniqueNumbers[i]);
 
             }
 
@@ -339,7 +144,6 @@ namespace NEA_Prototype
 
             return correct;
 
-            finishedTest = true;
         }
 
         static void Main(string[] args)
@@ -414,98 +218,104 @@ namespace NEA_Prototype
             if (timerChoice == true)
             {
 
-                Console.Write("Do you wish to have either a ");
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.Write("stopwatch");
-                Console.ResetColor();
-                Console.Write(" or a ");
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.Write("countdown");
-                Console.ResetColor();
-                Console.Write("? To get more information on either, select ");
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("info");
-                Console.ResetColor();
-
-                Console.WriteLine("");
-
-                Console.WriteLine("  Stopwatch");
-                Console.WriteLine("  Countdown");
-                Console.WriteLine("  Info");
-                Console.WriteLine("  Cancel");
-
-                Console.CursorTop = 2;
-                Console.CursorLeft = 0;
-                Console.Write(">");
-
                 int specificTimerOption = 2;
-                bool backSpecificTimerChoice = false;
 
-                while (backSpecificTimerChoice != true && timerInfo != true)
+                do
                 {
-                    ConsoleKeyInfo choice = Console.ReadKey(true);
 
-                    if (choice.Key == ConsoleKey.DownArrow && specificTimerOption < 5)
+                    Console.Clear();
+
+                    Console.Write("Do you wish to have either a ");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write("stopwatch");
+                    Console.ResetColor();
+                    Console.Write(" or a ");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.Write("countdown");
+                    Console.ResetColor();
+                    Console.Write("? To get more information on either, select ");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("info");
+                    Console.ResetColor();
+
+                    Console.WriteLine("");
+
+                    Console.WriteLine("  Stopwatch");
+                    Console.WriteLine("  Countdown");
+                    Console.WriteLine("  Info");
+                    Console.WriteLine("  Cancel");
+
+                    Console.CursorTop = 2;
+                    Console.CursorLeft = 0;
+                    Console.Write(">");
+
+                    bool backSpecificTimerChoice = false;
+                    specificTimerOption = 2;
+
+                    while (backSpecificTimerChoice != true && timerInfo != true)
                     {
-                        Console.CursorTop = specificTimerOption;
-                        Console.CursorLeft = 0;
-                        Console.Write(" ");
-                        specificTimerOption++;
-                        Console.CursorTop = specificTimerOption;
-                        Console.CursorLeft = 0;
-                        Console.Write(">");
-                    }
+                        ConsoleKeyInfo choice = Console.ReadKey(true);
 
-                    else if (choice.Key == ConsoleKey.UpArrow && specificTimerOption > 2)
-                    {
-                        Console.CursorTop = specificTimerOption;
-                        Console.CursorLeft = 0;
-                        Console.Write(" ");
-                        specificTimerOption--;
-                        Console.CursorTop = specificTimerOption;
-                        Console.CursorLeft = 0;
-                        Console.Write(">");
-                    }
-
-                    else if (choice.Key == ConsoleKey.Enter)
-                    {
-
-                        Console.Clear();
-
-                        if (specificTimerOption == 2)
+                        if (choice.Key == ConsoleKey.DownArrow && specificTimerOption < 5)
                         {
-                            stopwatch = true;
+                            Console.CursorTop = specificTimerOption;
+                            Console.CursorLeft = 0;
+                            Console.Write(" ");
+                            specificTimerOption++;
+                            Console.CursorTop = specificTimerOption;
+                            Console.CursorLeft = 0;
+                            Console.Write(">");
                         }
 
-                        else if (specificTimerOption == 3)
+                        else if (choice.Key == ConsoleKey.UpArrow && specificTimerOption > 2)
                         {
-                            countdown = true;
+                            Console.CursorTop = specificTimerOption;
+                            Console.CursorLeft = 0;
+                            Console.Write(" ");
+                            specificTimerOption--;
+                            Console.CursorTop = specificTimerOption;
+                            Console.CursorLeft = 0;
+                            Console.Write(">");
                         }
 
-                        else if (specificTimerOption == 4)
+                        else if (choice.Key == ConsoleKey.Enter)
                         {
 
-                            //timerInfo = true;
+                            Console.Clear();
 
-                            //MAKE IT SO THIS THING GOES BACK TO THE OPTIONS AGAIN (e.g. line 314)
+                            if (specificTimerOption == 2)
+                            {
+                                stopwatch = true;
+                            }
 
-                            Console.WriteLine("Stopwatch");
-                            Console.WriteLine();
-                            Console.WriteLine("A stopwatch is used to measure the elapsed time of an event, and if you select this option you will see how long you took to finish the test (e.g. 01:08, being 1 minute 8 seconds.).");
+                            else if (specificTimerOption == 3)
+                            {
+                                countdown = true;
+                            }
+
+                            else if (specificTimerOption == 4)
+                            {
+
+                                Console.WriteLine("Stopwatch");
+                                Console.WriteLine();
+                                Console.WriteLine("A stopwatch is used to measure the elapsed time of an event, and if you select this option you will see how long you took to finish the test (e.g. 01:08, being 1 minute 8 seconds.).");
                             
-                            Console.WriteLine();
-                            Console.WriteLine();
+                                Console.WriteLine();
+                                Console.WriteLine();
 
-                            Console.WriteLine("Countdown");
-                            Console.WriteLine();
-                            Console.WriteLine("A countdown is a timer that counts backward from a specified duration to zero, and if you select this option you will see how long you had left to finish the test (e.g. 00:02:45, being 2 minutes 45 seconds remaining.). ");
-                            Console.ReadKey();
+                                Console.WriteLine("Countdown");
+                                Console.WriteLine();
+                                Console.WriteLine("A countdown is a timer that counts backward from a specified duration to zero, and if you select this option you will see how long you had left to finish the test (e.g. 00:02:45, being 2 minutes 45 seconds remaining.). ");
+                                Console.ReadKey();
+                            }
+
+                            backSpecificTimerChoice = true;
+
                         }
-
-                        backSpecificTimerChoice = true;
-
                     }
-                }
+                    
+                } while (specificTimerOption == 4);
+
 
             }
 
@@ -582,15 +392,13 @@ namespace NEA_Prototype
             bool finishedTest = false;
 
             Console.Clear();
-            
-            //stops here for some reason
 
             if (countdown == true || stopwatch == true)
             {
                 Stopwatch.Start();
             }
 
-            correct = printQuestions(numOfQuestions, finishedTest, correct, skips);
+            correct = printQuestions(numOfQuestions, finishedTest, correct, ref skips);
 
             if (stopwatch == true)
             {

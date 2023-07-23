@@ -45,3 +45,53 @@ namespace General_troubleshooting
         }
     }
 }
+
+//switch case
+
+/*switch (chosenQuestion)
+{
+    case 1:
+        correct = question1(correct, userAnswer, skips);
+        break;
+
+    case 2:
+        correct = question2(correct, userAnswer, skips);
+        break;
+
+    case 3:
+        correct = question3(correct, userAnswer, skips);
+        break;
+
+    case 4:
+        correct = question4(correct, userAnswer, skips);
+        break;
+
+    case 5:
+        correct = question5(correct, userAnswer, skips);
+        break;
+
+    case 6:
+        correct = question6(correct, userAnswer, skips);
+        break;
+
+    case 7:
+        correct = question7(correct, userAnswer, skips);
+        break;
+
+    case 8:
+        correct = question8(correct, userAnswer, skips);
+        break;
+
+    case 9:
+        correct = question9(correct, userAnswer, skips);
+        break;
+
+    case 10:
+        correct = question10(correct, userAnswer, skips);
+        break;
+
+    default:
+        break;
+}*/
+
+
