@@ -9,6 +9,108 @@ namespace NEA_Prototype
 {
     internal class Program
     {
+        //Menus
+        static void timerChoiceMenu()
+        {
+            Console.WriteLine("Do you wish to have a timer?");
+
+            Console.WriteLine("");
+
+            Console.WriteLine("  Yes");
+            Console.WriteLine("  No");
+        }
+        static void specificTimerChoiceInfo()
+        {
+            Console.WriteLine("Stopwatch");
+            Console.WriteLine();
+            Console.WriteLine("A stopwatch is used to measure the elapsed time of an event, and if you select this option you will see how long you took to finish the test (e.g. 01:08, being 1 minute 8 seconds.).");
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("Countdown");
+            Console.WriteLine();
+            Console.WriteLine("A countdown is a timer that counts backward from a specified duration to zero, and if you select this option you will see how long you had left to finish the test (e.g. 00:02:45, being 2 minutes 45 seconds remaining.). ");
+            Console.ReadKey();
+        }
+        static void specificTimerChoiceMenu()
+        {
+            Console.Write("Do you wish to have either a ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("stopwatch");
+            Console.ResetColor();
+            Console.Write(" or a ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("countdown");
+            Console.ResetColor();
+            Console.Write("? To get more information on either, select ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("info");
+            Console.ResetColor();
+
+            Console.WriteLine("");
+
+            Console.WriteLine("  Stopwatch");
+            Console.WriteLine("  Countdown");
+            Console.WriteLine("  Info");
+            Console.WriteLine("  Cancel");
+        }
+        static void testSizeChoiceMenu()
+        {
+            Console.WriteLine("Do you want to have a normal sized test or a short test?");
+
+            Console.WriteLine("");
+
+            Console.WriteLine("  Normal");
+            Console.WriteLine("  Short");
+        }
+
+        static int selector(int option, int upperbound, int lowerbound)
+        {
+            Console.CursorTop = option;
+            Console.CursorLeft = 0;
+            Console.Write(">");
+
+            bool back = false;
+
+            while (back != true)
+            {
+                ConsoleKeyInfo selected = Console.ReadKey(true);
+
+                if (selected.Key == ConsoleKey.DownArrow && option < upperbound)
+                {
+                    Console.CursorTop = option;
+                    Console.CursorLeft = 0;
+                    Console.Write(" ");
+                    option++;
+                    Console.CursorTop = option;
+                    Console.CursorLeft = 0;
+                    Console.Write(">");
+                }
+
+                else if (selected.Key == ConsoleKey.UpArrow && option > lowerbound)
+                {
+                    Console.CursorTop = option;
+                    Console.CursorLeft = 0;
+                    Console.Write(" ");
+                    option--;
+                    Console.CursorTop = option;
+                    Console.CursorLeft = 0;
+                    Console.Write(">");
+                }
+
+                else if (selected.Key == ConsoleKey.Enter)
+                {
+
+                    Console.Clear();
+
+                    back = true;
+
+                }
+            }
+
+            return option - 1;
+        }
 
         static string questionAnswerSelector(int questionNumber, ref int skips, Dictionary<int, string[]> questions)
         {
@@ -94,7 +196,6 @@ namespace NEA_Prototype
             }
 
             return correct;
-
         }
 
         static int printQuestions(int numOfQuestions, bool finishedTest, int correct, ref int skips)
@@ -143,12 +244,12 @@ namespace NEA_Prototype
             Console.WriteLine("End of questions");
 
             return correct;
-
         }
+
+        static int option, upperbound, lowerbound;
 
         static void Main(string[] args)
         {
-
             int skips = 0;
 
             int correct = 0;
@@ -159,230 +260,83 @@ namespace NEA_Prototype
             bool stopwatch = false;
             bool timerInfo = false;
 
-            Console.WriteLine("Do you wish to have a timer?");
-            bool timerChoice = false;
+            string timerChoice = "";
 
-            Console.WriteLine("");
-
-            Console.WriteLine("  Yes");
-            Console.WriteLine("  No");
-
-            Console.CursorTop = 2;
-            Console.CursorLeft = 0;
-            Console.Write(">");
-
-            int timerOption = 2;
-            bool backTimerChoice = false;
-
-            while (backTimerChoice != true)
+            while (timerChoice != "1" && timerChoice != "2")
             {
-                ConsoleKeyInfo choice = Console.ReadKey(true);
-
-                if (choice.Key == ConsoleKey.DownArrow && timerOption < 3)
-                {
-                    Console.CursorTop = timerOption;
-                    Console.CursorLeft = 0;
-                    Console.Write(" ");
-                    timerOption++;
-                    Console.CursorTop = timerOption;
-                    Console.CursorLeft = 0;
-                    Console.Write(">");
-                }
-
-                else if (choice.Key == ConsoleKey.UpArrow && timerOption > 2)
-                {
-                    Console.CursorTop = timerOption;
-                    Console.CursorLeft = 0;
-                    Console.Write(" ");
-                    timerOption--;
-                    Console.CursorTop = timerOption;
-                    Console.CursorLeft = 0;
-                    Console.Write(">");
-                }
-
-                else if (choice.Key == ConsoleKey.Enter)
-                {
-
-                    Console.Clear();
-
-                    if (timerOption == 2)
-                    {
-                        timerChoice = true;
-                    }
-
-                    backTimerChoice = true;
-
-                }
+                timerChoiceMenu();
+                option = 2;
+                upperbound = 3;
+                lowerbound = 2;
+                timerChoice = selector(option, upperbound, lowerbound).ToString();
             }
 
-            if (timerChoice == true)
+            switch (timerChoice)
             {
+                case "1":
 
-                int specificTimerOption = 2;
+                    int specificTimerOption;
 
-                do
-                {
-
-                    Console.Clear();
-
-                    Console.Write("Do you wish to have either a ");
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.Write("stopwatch");
-                    Console.ResetColor();
-                    Console.Write(" or a ");
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.Write("countdown");
-                    Console.ResetColor();
-                    Console.Write("? To get more information on either, select ");
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("info");
-                    Console.ResetColor();
-
-                    Console.WriteLine("");
-
-                    Console.WriteLine("  Stopwatch");
-                    Console.WriteLine("  Countdown");
-                    Console.WriteLine("  Info");
-                    Console.WriteLine("  Cancel");
-
-                    Console.CursorTop = 2;
-                    Console.CursorLeft = 0;
-                    Console.Write(">");
-
-                    bool backSpecificTimerChoice = false;
-                    specificTimerOption = 2;
-
-                    while (backSpecificTimerChoice != true && timerInfo != true)
+                    do
                     {
-                        ConsoleKeyInfo choice = Console.ReadKey(true);
+                        specificTimerOption = 0;
 
-                        if (choice.Key == ConsoleKey.DownArrow && specificTimerOption < 5)
+                        Console.Clear();
+
+                        specificTimerChoiceMenu();
+
+                        while (specificTimerOption != 1 && specificTimerOption != 2 && specificTimerOption != 3 && specificTimerOption != 4 && timerInfo != true)
                         {
-                            Console.CursorTop = specificTimerOption;
-                            Console.CursorLeft = 0;
-                            Console.Write(" ");
-                            specificTimerOption++;
-                            Console.CursorTop = specificTimerOption;
-                            Console.CursorLeft = 0;
-                            Console.Write(">");
+                            option = 2;
+                            upperbound = 5;
+                            lowerbound = 2;
+                            specificTimerOption = selector(option, upperbound, lowerbound);
                         }
 
-                        else if (choice.Key == ConsoleKey.UpArrow && specificTimerOption > 2)
+                        switch (specificTimerOption)
                         {
-                            Console.CursorTop = specificTimerOption;
-                            Console.CursorLeft = 0;
-                            Console.Write(" ");
-                            specificTimerOption--;
-                            Console.CursorTop = specificTimerOption;
-                            Console.CursorLeft = 0;
-                            Console.Write(">");
-                        }
-
-                        else if (choice.Key == ConsoleKey.Enter)
-                        {
-
-                            Console.Clear();
-
-                            if (specificTimerOption == 2)
-                            {
+                            case 1:
                                 stopwatch = true;
-                            }
-
-                            else if (specificTimerOption == 3)
-                            {
+                                break;
+                            case 2:
                                 countdown = true;
-                            }
-
-                            else if (specificTimerOption == 4)
-                            {
-
-                                Console.WriteLine("Stopwatch");
-                                Console.WriteLine();
-                                Console.WriteLine("A stopwatch is used to measure the elapsed time of an event, and if you select this option you will see how long you took to finish the test (e.g. 01:08, being 1 minute 8 seconds.).");
-                            
-                                Console.WriteLine();
-                                Console.WriteLine();
-
-                                Console.WriteLine("Countdown");
-                                Console.WriteLine();
-                                Console.WriteLine("A countdown is a timer that counts backward from a specified duration to zero, and if you select this option you will see how long you had left to finish the test (e.g. 00:02:45, being 2 minutes 45 seconds remaining.). ");
-                                Console.ReadKey();
-                            }
-
-                            backSpecificTimerChoice = true;
-
+                                break;
+                            case 3:
+                                specificTimerChoiceInfo();
+                                break;
                         }
-                    }
-                    
-                } while (specificTimerOption == 4);
 
+                    } while (specificTimerOption == 3);
 
+                    break;
             }
 
             Console.Clear();
 
-            Console.WriteLine("Do you want to have a normal sized test or a short test?");
-
             int numOfQuestions = 0;
+            
+            int testSizeChoice = 0;
 
-            Console.WriteLine("");
-
-            Console.WriteLine("  Normal");
-            Console.WriteLine("  Short");
-
-            Console.CursorTop = 2;
-            Console.CursorLeft = 0;
-            Console.Write(">");
-
-            int testSizeChoice = 2;
-            bool backQuestionSize = false;
-
-            while (backQuestionSize != true)
+            while (testSizeChoice != 1 && testSizeChoice != 2)
             {
-                ConsoleKeyInfo choice = Console.ReadKey(true);
+                testSizeChoiceMenu();
+                option = 2;
+                upperbound = 3;
+                lowerbound = 2;
+                testSizeChoice = selector(option, upperbound, lowerbound);
+            }
 
-                if (choice.Key == ConsoleKey.DownArrow && testSizeChoice < 3)
-                {
-                    Console.CursorTop = testSizeChoice;
-                    Console.CursorLeft = 0;
-                    Console.Write(" ");
-                    testSizeChoice++;
-                    Console.CursorTop = testSizeChoice;
-                    Console.CursorLeft = 0;
-                    Console.Write(">");
-                }
+            switch (testSizeChoice)
+            {
+                case 1:
+                    numOfQuestions = 10;
+                    skips = 3;
+                    break;
 
-                else if (choice.Key == ConsoleKey.UpArrow && testSizeChoice > 2)
-                {
-                    Console.CursorTop = testSizeChoice;
-                    Console.CursorLeft = 0;
-                    Console.Write(" ");
-                    testSizeChoice--;
-                    Console.CursorTop = testSizeChoice;
-                    Console.CursorLeft = 0;
-                    Console.Write(">");
-                }
-
-                else if (choice.Key == ConsoleKey.Enter)
-                {
-
-                    Console.Clear();
-
-                    if (testSizeChoice == 2)
-                    {
-                        numOfQuestions = 10;
-                        skips = 3;
-                    }
-
-                    else if (testSizeChoice == 3)
-                    {
-                        numOfQuestions = 5;
-                        skips = 1;
-                    }
-
-                    backQuestionSize = true;
-
-                }
+                case 2:
+                    numOfQuestions = 5;
+                    skips = 1;
+                    break;
             }
 
             Console.WriteLine("Questions will now be started");
@@ -400,28 +354,23 @@ namespace NEA_Prototype
 
             correct = printQuestions(numOfQuestions, finishedTest, correct, ref skips);
 
+            Stopwatch.Stop();
+
+            TimeSpan elapsedTime = Stopwatch.Elapsed;
+
             if (stopwatch == true)
             {
-                Stopwatch.Stop();
-
-                TimeSpan elapsedTimeStopwatch = Stopwatch.Elapsed;
-
-                string time = String.Format("{0:00}:{1:00}", elapsedTimeStopwatch.Minutes, elapsedTimeStopwatch.Seconds);
+                string time = String.Format("{0:00}:{1:00}", elapsedTime.Minutes, elapsedTime.Seconds);
 
                 Console.WriteLine("Your time was " + time);
             }
 
             else if (countdown == true)
             {
-                Stopwatch.Stop();
-
-                TimeSpan elapsedTimeCountdown = Stopwatch.Elapsed;
-
-                TimeSpan countdownTime = TimeSpan.FromMinutes(10) - elapsedTimeCountdown;
+                TimeSpan countdownTime = TimeSpan.FromMinutes(10) - elapsedTime;
 
                 Console.WriteLine("The time left was " + countdownTime);
             }
-
 
             double percentageCorrect = (Convert.ToDouble(correct) / Convert.ToDouble(numOfQuestions)) * 100;
 
