@@ -1,0 +1,23 @@
+PHYSICS What is the formula for friction?
+ANSWER a
+A) F = Keq1q2 / r^2
+B) F = µR
+C) F = 1 / T
+D) F = PA
+E) F = ∆H - T∆S
+
+PHYSICS What fundamental particles comprise a proton?
+ANSWER b
+A) One up quark and two down quarks
+B) Two up quarks and one up quark
+C) One electron and one anti-electron
+D) One anti-electron and a neutron
+E) One anti-electron, one up quark and one down quark
+
+PHYSICS What is the second law of thermodynamics?
+ANSWER c
+A) Force is equal to the product of mass and acceleration
+B) All spontaneous processes result in the increase of the entropy of the universe
+C) The net change in total energy of a system is equal to the heat added to the system minus the work done by the system
+D) Electrons can only be found in quantised energy levels
+E) The frequency of energy emitted from a hot object increases as the temperature of the object increases

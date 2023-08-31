@@ -115,6 +115,7 @@ namespace NEA_Prototype
         static string questionAnswerSelector(int questionNumber, ref int skips, Dictionary<int, string[]> questions)
         {
             string userAnswer = "";
+            int questionAnswerSelectorUpperbound = 8;
 
             Console.WriteLine("");
 
@@ -140,9 +141,15 @@ namespace NEA_Prototype
 
             while (back != true)
             {
+
+                if (skips <= 0)
+                {
+                    questionAnswerSelectorUpperbound = 7;
+                }
+
                 ConsoleKeyInfo choice = Console.ReadKey(true);
 
-                if (choice.Key == ConsoleKey.DownArrow && option < 8)
+                if (choice.Key == ConsoleKey.DownArrow && option < questionAnswerSelectorUpperbound)
                 {
                     Console.CursorTop = option;
                     Console.CursorLeft = 0;

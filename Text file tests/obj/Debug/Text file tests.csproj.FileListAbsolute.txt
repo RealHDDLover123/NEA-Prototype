@@ -1,0 +1,8 @@
+D:\Github\NEA-Prototype\Text file tests\bin\Debug\Text file tests.exe.config
+D:\Github\NEA-Prototype\Text file tests\bin\Debug\Text file tests.exe
+D:\Github\NEA-Prototype\Text file tests\bin\Debug\Text file tests.pdb
+D:\Github\NEA-Prototype\Text file tests\obj\Debug\Text file tests.csproj.AssemblyReference.cache
+D:\Github\NEA-Prototype\Text file tests\obj\Debug\Text file tests.csproj.SuggestedBindingRedirects.cache
+D:\Github\NEA-Prototype\Text file tests\obj\Debug\Text file tests.csproj.CoreCompileInputs.cache
+D:\Github\NEA-Prototype\Text file tests\obj\Debug\Text file tests.exe
+D:\Github\NEA-Prototype\Text file tests\obj\Debug\Text file tests.pdb
